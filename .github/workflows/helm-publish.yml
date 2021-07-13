@@ -20,6 +20,6 @@ jobs:
         # The charts directory
         charts_dir: helm
         # The GitHub Pages URL to the charts repo (default: https://<owner>.github.io/<repo>)
-        charts_repo_url: https://github.com/linkbynet/kubernetes-repo-helm
+        charts_repo_url: https://linkbynet.github.io/kubernetes-repo-helm
       env:
         CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"

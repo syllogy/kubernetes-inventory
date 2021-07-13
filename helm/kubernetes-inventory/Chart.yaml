@@ -2,4 +2,4 @@ apiVersion: v1
 appVersion: "1"
 description: A Helm chart for lbn-inventory
 name: helm
-version: 0.1.2
+version: 0.1.3
