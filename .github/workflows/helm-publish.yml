@@ -10,10 +10,14 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@master
-    - name: Publish
-      uses: djerfy/gh-actions/helm-gh-pages@master
+    - name: Helm Chart Releaser
+      uses: helm/chart-releaser-action@v1.2.1
       with:
-        args: helm/kubernetes-inventory https://github.com/linkbynet/kubernetes-repo-helm master
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        GITHUB_SSHKEY: ${{ secrets.GITHUB_SSHKEY }}
+        # The chart-releaser version to use (default: v1.2.1)
+        version: # optional
+        # The relative path to the chart-releaser config file
+        config: # optional
+        # The charts directory
+        charts_dir: # optional, default is charts
+        # The GitHub Pages URL to the charts repo (default: https://<owner>.github.io/<repo>)
+        charts_repo_url: https://github.com/linkbynet/kubernetes-repo-helm
