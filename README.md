@@ -23,7 +23,7 @@ This report can then be imported in an inventory tool, for example OCS inventory
 kubectl create namespace lbn-inventory
 
 # Add helm repository
-helm repo add linkbynet https://linkbynet.github.io/kubernetes-repo-helm
+helm repo add lbn https://linkbynet.github.io/helm-charts
 
 helm upgrade --install kubernetes-inventory \
         --set aws.access_key_id=… \
@@ -32,7 +32,7 @@ helm upgrade --install kubernetes-inventory \
         --set kube.cluster=… \
         --set lbnref=… \
         … \ 
-        linkbynet/kubernetes-inventory
+        lbn/kubernetes-inventory
 ```
 
 ## Values
