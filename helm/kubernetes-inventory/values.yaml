@@ -1,0 +1,18 @@
+inventory:
+  image: linkbn/kubernetes-inventory
+  tag: latest
+
+aws:
+  # upload only access on kube inventory bucket
+  access_key_id: ""
+  secret_access_key: "" 
+  s3:
+    bucket: ""
+    folder: "Kubernetes"
+    region: "eu-west-1"
+
+proxy: ""
+
+kube:
+  cluster: "" 
+  lbnref: ""

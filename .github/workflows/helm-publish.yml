@@ -1,0 +1,19 @@
+name: Helm Publish
+on:
+  push:
+    tags:
+    - v*
+jobs:
+  build:
+    name: Deployment
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+    - name: Publish
+      uses: djerfy/gh-actions/helm-gh-pages@master
+      with:
+        args: helm/kubernetes-inventory https://github.com/linkbynet/kubernetes-repo-helm master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_SSHKEY: ${{ secrets.GITHUB_SSHKEY }}
