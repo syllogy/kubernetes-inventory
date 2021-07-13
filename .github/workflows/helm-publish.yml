@@ -25,6 +25,6 @@ jobs:
         uses: helm/chart-releaser-action@v1.2.1
         with:
           charts_dir: helm
-          charts_repo_url: https://linkbynet.github.io/kubernetes-repo-helm
+          charts_repo_url: https://linkbynet.github.io/kubernetes-inventory
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
