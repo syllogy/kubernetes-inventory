@@ -11,7 +11,10 @@ Currently collect :
   - StatefulSets
   - Deployments
   - Cronjobs
-- Velero backups
+  - Ingresses
+- Velero
+  - Backups
+  - Schedules
 
 This report can then be imported in an inventory tool, for example OCS inventory.
 

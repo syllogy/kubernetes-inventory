@@ -22,6 +22,7 @@ except config.ConfigException:
 api_core_v1 = client.CoreV1Api()
 api_apps_v1 = client.AppsV1Api()
 api_batchs_v1_beta_1 = client.BatchV1beta1Api()
+api_networking_v1_beta_1 = client.NetworkingV1beta1Api()
 api_version = client.VersionApi()
 api_custom_object = client.CustomObjectsApi()
 
@@ -56,6 +57,10 @@ def get_cronjobs(namespace):
     data = api_batchs_v1_beta_1.list_namespaced_cron_job(namespace=namespace)
     return data.to_dict()
 
+def get_ingresses(namespace):
+    data = api_networking_v1_beta_1.list_namespaced_ingress(namespace=namespace)
+    return data.to_dict()
+
 def get_namespaces():
     data = api_core_v1.list_namespace()
     namespaces = [ns.metadata.name for ns in data.items]
@@ -66,6 +71,7 @@ def get_namespaces():
                     'daemonsets': get_daemonsets(ns),
                     'statefulsets': get_statefulsets(ns),
                     'cronjobs': get_cronjobs(ns),
+                    'ingresses': get_ingresses(ns),
                     'helm': get_helm(ns)
                    })
     return ret
