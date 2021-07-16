@@ -23,6 +23,7 @@ api_core_v1 = client.CoreV1Api()
 api_apps_v1 = client.AppsV1Api()
 api_batchs_v1_beta_1 = client.BatchV1beta1Api()
 api_networking_v1_beta_1 = client.NetworkingV1beta1Api()
+api_extensions_v1_beta_1 = client.ExtensionsV1beta1Api()
 api_version = client.VersionApi()
 api_custom_object = client.CustomObjectsApi()
 
@@ -58,8 +59,16 @@ def get_cronjobs(namespace):
     return data.to_dict()
 
 def get_ingresses(namespace):
-    data = api_networking_v1_beta_1.list_namespaced_ingress(namespace=namespace)
-    return data.to_dict()
+    try:
+        data = api_networking_v1_beta_1.list_namespaced_ingress(namespace=namespace)
+        return data.to_dict()
+    except:
+        try:
+            data = api_extensions_v1_beta_1.list_namespaced_ingress(namespace=namespace)
+            return data.to_dict()
+        except:
+            print("Unable to list Ingresses for namespace",namespace)
+            return [{"error": "could not read Ingress"}]
 
 def get_namespaces():
     data = api_core_v1.list_namespace()
